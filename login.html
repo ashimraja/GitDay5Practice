@@ -8,6 +8,9 @@
         *{
             margin: 0;
         }
+        .container h1{
+            font-size: 30px;
+        }
         .container{
             display: flex;
             align-items: center;
@@ -18,36 +21,82 @@
             background: lightblue;
         }
         .sub-container{
+            height: 20%;
+            padding:20px 10px;
+            background: black;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 5px;
+            border-radius: 10px;
         }
         .input{
             display: flex;
             align-items: center;
+            
+            
         }
         .input input {
             flex:1;
+            border: none;
+            outline: none;
+            padding: 3px;
+            border-radius: 5px;
+            background: lightblue;
         }
         .input label{
             width: 100px;
+            font-weight: 400;
+            font-size: large;
+            color: lightblue;
+        }
+        .btn{
+            padding: 5px;
+            background: lightblue;
+            border: none;
+            width: 30%;
+            border-radius: 10px;
+            font-size: large;
         }
     </style>
+    <script>
+        function onSubmit(event){
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+            let credential = {
+                "name":name,
+                "password":password
+            }
+            if(name==="ashim" && password==="123456"){
+                alert('login successful')
+                window.location.href=('./home.html')
+            }
+            else{
+                alert('wrong password or username');
+                document.getElementById('name').value=""
+                document.getElementById('password').value=""
+            }   
+        }
+    </script>
 </head>
 <body>
     <div class="container">
     <h1>Login</h1>
-    <div class="sub-container">
-        <div class="input">
-        <label for="name">Name</label>
-        <input type="text" name="name">
-        </div>
-        <br>
-        <div class="input">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-        </div>
-    </div>
+        <form onsubmit="return onSubmit(event)" class="sub-container">
+            <div class="input">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <br>
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <br>
+            <button  type="submit" class="btn">Submit</button>
+        </form>
     </div>
 </body>
 </html>
